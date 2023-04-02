@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "yYifyKkWNSKd2U1zDBcfeibQXBnJ2b05SsNWeGICVl/4f569st8sPPE/N9mQVo6bOrC7OMrdCHSzTwHQ0AArQQ==",
+  "success": true,
+  "projectFilePath": "D:\\Projs\\ChromeBookmark\\ChromeBookmark.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\gaurav\\.nuget\\packages\\csvhelper\\30.0.1\\csvhelper.30.0.1.nupkg.sha512",
+    "C:\\Users\\gaurav\\.nuget\\packages\\htmlagilitypack\\1.11.46\\htmlagilitypack.1.11.46.nupkg.sha512"
+  ],
+  "logs": []
+}
