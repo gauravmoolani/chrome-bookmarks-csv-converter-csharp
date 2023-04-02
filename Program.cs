@@ -8,7 +8,7 @@ using CsvHelper.Configuration;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Net;
-
+using System.Threading.Tasks;
 public class BookMark
 {
 
@@ -28,11 +28,11 @@ public sealed class BookMarkMap : ClassMap<BookMark>
 }
 public class Program
 {
-    private static void Main(string[] args)
+    static async Task Main(string[] args)
     {
 
         string filepath = "C:/Users/gaurav/Desktop/bookmarks_4_1_23.html";
-        var bookmarks = ReadChromeBookmarks(filepath);
+        var bookmarks =  await ReadChromeBookmarks(filepath);
         // foreach (var bookmark in bookmarks)
         // {
         //     Console.WriteLine($"Title:{bookmark.Title}\n");
@@ -42,7 +42,7 @@ public class Program
         SaveBookmarksToCsv(bookmarks, csvFilePath);
     }
 
-    static List<BookMark> ReadChromeBookmarks(string filepath)
+    static async Task<List<BookMark>> ReadChromeBookmarks(string filepath)
     {
         var bookmarks = new List<BookMark>();
         if (File.Exists(filepath))
@@ -51,7 +51,7 @@ public class Program
             var doc = new HtmlDocument();
             doc.Load(filepath);
             var links = doc.DocumentNode.SelectNodes("//a");
-            WebClient client = new WebClient();
+            HttpClient client = new HttpClient();
 
             foreach (var link in links)
             {
@@ -64,7 +64,7 @@ public class Program
                 {
                     try
                     {
-                        htmlContent = client.DownloadString(url);
+                        htmlContent = await client.GetStringAsync(url);
                     }
                     catch
                     {
